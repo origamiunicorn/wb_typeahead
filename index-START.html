@@ -19,7 +19,10 @@ const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb
 
 const cities = [];
 
-fetch(endpoint).then(blob => console.log(blob));
+// you fetch the data, but have to convert that data into the format it is/what you need, in this case json
+fetch(endpoint)
+.then(blob => blob.json())
+.then(data => console.log(data));
 
 </script>
 </body>
