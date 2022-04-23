@@ -11,7 +11,6 @@
     <input type="text" class="search" placeholder="Pokemon">
     <ul class="suggestions">
       <li>Filter for a pokemon</li>
-      <li>or a state</li>
     </ul>
   </form>
 <script>
@@ -34,8 +33,26 @@ function findMatches(wordToMatch, pokemon) {
     const regex = new RegExp(wordToMatch, 'gi');
     return poke.name.match(regex);
   })
-}
+};
 
+function displayMatches() {
+  const matchArray = findMatches(this.value, pokemon);
+  const html = matchArray.map(poke => {
+   return `
+   <li>
+    <span class="name">${poke.name} (#${poke.no})</span>
+    <span class="population">${poke.types.join(', ')}</span>
+    </li>
+   `
+ }).join(' ');
+suggestions.innerHTML = html;
+};
+
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
 
 </script>
 </body>
