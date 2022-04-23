@@ -16,14 +16,25 @@
   </form>
 <script>
 const endpoint = 'https://raw.githubusercontent.com/fuyutarow/pokemon.json/master/en/pokemon.json';
+const endpoint2 = 'https://raw.githubusercontent.com/sindresorhus/pokemon/main/data/en.json';
 
 const pokemon = [];
+const pokeNames = [];
 
 fetch(endpoint)
 .then(blob => blob.json())
 .then(data => pokemon.push(...data));
 
-console.log(pokemon);
+fetch(endpoint2)
+.then(blob => blob.json())
+.then(data => pokeNames.push(...data));
+
+function findMatches(wordToMatch, pokemon) {
+  return pokemon.filter(poke => {
+    const regex = new RegExp(wordToMatch, 'gi');
+    return poke.name.match(regex);
+  })
+}
 
 
 </script>
