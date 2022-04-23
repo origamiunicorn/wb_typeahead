@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="Pokemon">
+    <ul class="suggestions">
+      <li>Filter for a pokemon</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+<script>
+const endpoint = 'https://raw.githubusercontent.com/fuyutarow/pokemon.json/master/en/pokemon.json';
+
+const pokemon = [];
+
+fetch(endpoint)
+.then(blob => blob.json())
+.then(data => pokemon.push(...data));
+
+console.log(pokemon);
+
+
+</script>
+</body>
+</html>
