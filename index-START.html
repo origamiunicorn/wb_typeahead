@@ -33,7 +33,7 @@ function findMatches(wordToMatch, cities) {
 }
 
 function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); //adds commas into the population number per USA numbering
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); //adds commas into the population number per USA numbering, no spaces in the regex allowed
 }
 
 function displayMatches() {
